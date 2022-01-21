@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Nav from "./components/Nav/Nav";
+import Home from "./components/Home";
+
+//styles
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div className="bg-gray-900 h-screen">
+      <Nav />
+      <Home />
+      <p className="text-white text-xs text-center bg-gray-900 pb-5">
+        Made with ❤ by{" "}
         <a
-          className="App-link"
-          href="https://reactjs.org"
           target="_blank"
-          rel="noopener noreferrer"
+          href="https://github.com/igor-ostojic"
+          className="font-semibold hover:text-indigo-200"
         >
-          Learn React
+          Igor Ostojic
         </a>
-      </header>
+      </p>
     </div>
   );
 }
