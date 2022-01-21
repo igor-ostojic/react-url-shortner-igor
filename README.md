@@ -1,4 +1,4 @@
-# URL Shortening app made with React and shrtcode API
+# URL Shortening web-app made with React and shrtcode API
 
 Live Site here : 
 https://react-url-shorten-igor.netlify.app/
