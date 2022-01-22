@@ -1,10 +1,12 @@
 import { type } from "@testing-library/user-event/dist/type";
 import { useState, useEffect } from "react";
+import LoadingIcon from "./LoadingIcon";
 
 const URLForm = () => {
   const [typedUrl, setTypedUrl] = useState(null);
   const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleUrlChange = (e) => {
     setTypedUrl(e.target.value);
@@ -13,20 +15,21 @@ const URLForm = () => {
   const getShortURL = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${typedUrl}`);
     const data = await response.json();
     if (typedUrl == null || response.ok !== true) {
       setError(true);
       setUrl(null);
+      setLoading(false);
     }
 
     const shortenUrl = data.result.short_link2;
 
     setUrl(shortenUrl);
     setError(false);
+    setLoading(false);
   };
-
-  console.log(url);
 
   return (
     <div className="mt-10 sm:mt-12">
@@ -51,6 +54,7 @@ const URLForm = () => {
           </div>
         </div>
       </form>
+      {loading && <LoadingIcon />}
       {url && (
         <div className="mt-5 sm:mt-5 bg-[#6C63FF] rounded-md p-5 shadow-md mobile-nav">
           <p className="text-gray-900 font-medium text-xl">Your shortened link :</p>

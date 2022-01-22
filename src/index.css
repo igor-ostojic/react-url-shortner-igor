@@ -6,6 +6,10 @@
   animation: fade-in 0.4s ease;
 }
 
+.fade-in {
+  animation: fade 0.4s ease;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -14,6 +18,16 @@
 
   to {
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
     opacity: 1;
   }
 }
